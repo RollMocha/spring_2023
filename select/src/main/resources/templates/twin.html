@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #burger{
+            display: inline;
+        }
+        #side{
+            display: none;
+        }
+        #drink{
+            display: none;
+        }
+        #dessert{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <select onchange="handleOnChange(this)">
+            <option value="burger">햄버거</option>
+            <option value="side">사이드</option>
+            <option value="drink">음료수</option>
+            <option value="dessert">디저트</option>
+        </select>
+        <select id="burger">
+            <option>불고기버거</option>
+            <option>새우버거</option>
+            <option>치킨버거</option>
+        </select>
+        <select id="side">
+            <option>감자튀김</option>
+            <option>양념감자튀김</option>
+            <option>치즈감자튀김</option>
+        </select>
+        <select id="drink">
+            <option value="burger">불고기버거</option>
+            <option value="side">새우버거</option>
+            <option value="drink">치킨버거</option>
+        </select>
+        <select id="dessert">
+            <option value="burger">불고기버거</option>
+            <option value="side">새우버거</option>
+            <option value="drink">치킨버거</option>
+        </select>
+        <div id='result'></div>
+    </div>
+    <script src="js/twin.js">
+
+    </script>
+</body>
+</html>

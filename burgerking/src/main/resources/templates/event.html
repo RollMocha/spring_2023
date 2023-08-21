@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th = "http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>이벤트</title>
+    <link rel="stylesheet" href="/css/top_menu.css">
+    <link rel="stylesheet" href="/css/home.css">
+    <link rel="stylesheet" href="/css/bottom_menu.css">
+    <link rel="stylesheet" href="/css/black_line.css">
+    <link rel="stylesheet" href="/css/event.css">
+    <style>
+        .first_event{
+            width: 100%;
+            height: 100px;
+            background-color: #FF0000;
+        }
+        .second_event{
+            width: 100%;
+            height: 100px;
+            background-color: #FFFF00;
+        }
+        .third_event{
+            width: 100%;
+            height: 100px;
+            background-color: #0000FF;
+        }
+        .th_progress:nth-child(1) a{
+            color:red;
+        }
+        .event_bulletin {
+            width: 600px;
+            height: 100px;
+            border: 1px solid black;
+        }
+    </style>
+
+</head>
+<body>
+    <div th:replace="/fragment/top_menu.html :: top_menu"></div>
+    <div th:replace="/fragment/black_line.html :: black_line"></div>
+    <div id="div_event">
+        <h1>이벤트</h1>
+        <table class="tb_progress">
+            <tr>
+                <th class="th_progress">
+                    <a th:href="@{/burgerking/event/0/0}">전체</a>
+                </th>
+                <th class="th_progress"><a th:href="@{/burgerking/event/0/1}">진행중</a></th>
+                <th class="th_progress"><a th:href="@{/burgerking/event/0/2}">종료</a></th>
+            </tr>
+        </table>
+        <table class="tb_event">
+            <tr>
+                <th class="th_event">이벤트</th>
+                <th class="th_event">신규매장</th>
+            </tr>
+        </table>
+        <div class="sub_event" th:switch="${th_event}">
+            <div th:case="all" class="first_event">
+                <table class="tb_sub_event">
+                    <tr>
+                        <td class="event_bulletin">
+
+                        </td>
+                        <td class="event_bulletin">
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="event_bulletin">
+
+                        </td>
+                        <td class="event_bulletin">
+
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div th:case="event" class="second_event">2</div>
+            <div th:case="end" class="third_event">3</div>
+        </div>
+    </div>
+    <div th:replace="/fragment/bottom_menu.html :: bottom_menu"></div>
+    <script src="/js/event.js">
+
+    </script>
+</body>
+</html>

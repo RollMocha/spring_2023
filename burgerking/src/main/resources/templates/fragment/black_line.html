@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th = "http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/css/black_line.css">
+</head>
+<body>
+    <div id="black_line" th:fragment="black_line" th:switch="${black_line}">
+        <p th:case="howtomenu">HOME > 메뉴소개</p>
+        <p th:case="event">HOME > 이벤트 > 진행중</p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th = "http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>이벤트</title>
+  <link rel="stylesheet" href="/css/top_menu.css">
+  <link rel="stylesheet" href="/css/home.css">
+  <link rel="stylesheet" href="/css/bottom_menu.css">
+  <link rel="stylesheet" href="/css/black_line.css">
+  <link rel="stylesheet" href="/css/event.css">
+  <style>
+        .tb_event tr th {
+            width: 50%;
+            font-size: 25px;
+            border-left: 2px solid black;
+            border-right: 2px solid black;
+        }
+        .tb_event tr th:nth-child(1){
+            border: none;
+            border-bottom: 2px solid black;
+            background-color: #f2f2f2;
+            color: #C0C0C0;
+        }
+        .tb_event tr th:nth-child(2){
+            border: none;
+            border-top: 2px solid black;
+            border-left: 2px solid black;
+            border-right: 2px solid black;
+            background-color: #FFFFFF;
+            color: #000000;
+        }
+        .sub_event{
+            width: 100%;
+            height: 100px;
+            background-color: #CC0000;
+            position: absolute;
+            top: 200px;
+        }
+    </style>
+</head>
+<body>
+<div th:replace="/fragment/top_menu.html :: top_menu"></div>
+<div th:replace="/fragment/black_line.html :: black_line"></div>
+<div id="div_event">
+  <h1>이벤트</h1>
+  <table class="tb_event">
+    <tr>
+      <th class="th_event">이벤트</th>
+      <th class="th_event">신규매장</th>
+    </tr>
+  </table>
+  <div class="sub_event" th:switch="${th_event}">
+    <div th:case="all"></div>
+    <div th:case="event"></div>
+    <div th:case="end"></div>
+  </div>
+</div>
+<div th:replace="/fragment/bottom_menu.html :: bottom_menu"></div>
+<script src="/js/event.js">
+
+</script>
+</body>
+</html>
