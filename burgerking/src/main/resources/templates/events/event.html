@@ -43,10 +43,10 @@
         <table class="tb_progress">
             <tr>
                 <th class="th_progress">
-                    <a th:href="@{/burgerking/event/0/0}">전체</a>
+                    <a th:href="@{/burgerking/event/0/0}" onclick="AllIsClick()" id="all">전체</a>
                 </th>
-                <th class="th_progress"><a th:href="@{/burgerking/event/0/1}">진행중</a></th>
-                <th class="th_progress"><a th:href="@{/burgerking/event/0/2}">종료</a></th>
+                <th class="th_progress"><a th:href="@{/burgerking/event/0/1}" onclick="AllIsClick()" id="ongoing">진행중</a></th>
+                <th class="th_progress"><a th:href="@{/burgerking/event/0/2}" onclick="EndIsClick()" id="end">종료</a></th>
             </tr>
         </table>
         <table class="tb_event">

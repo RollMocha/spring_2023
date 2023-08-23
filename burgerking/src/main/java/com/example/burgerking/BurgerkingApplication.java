@@ -1,23 +1,16 @@
 package com.example.burgerking;
 
 import com.example.burgerking.entity.Event;
-import com.example.burgerking.entity.Login;
-import com.example.burgerking.repository.BurgerkingRepository;
 import com.example.burgerking.repository.EventRepository;
-import com.example.burgerking.service.BurgerkingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.*;
 
 @SpringBootApplication
 public class BurgerkingApplication {
-
 	public static void main(String[] args) {
 		SpringApplication.run(BurgerkingApplication.class, args).getBean(BurgerkingApplication.class).execute();
 	}
@@ -32,8 +25,8 @@ public class BurgerkingApplication {
 	LocalDate open_date = LocalDate.of(2023,8,01);
 	LocalDate close_date = LocalDate.of(2023,8,07);
 	private void execute() {
-		//gettest();
-		setup();
+		gettest();
+		//setup();
 		//showList();
 		//showOne();
 		//updateLogin();
@@ -46,15 +39,11 @@ public class BurgerkingApplication {
 	}
 	private void setup() {
 		System.out.println(" --- 등록 처리 개시 --- ");
-		Event event1 = new Event(null, "/img/event_burger_1", "/img/event_burger_1", close_date,"내용",true, open_date);
+		Event event1 = new Event(null, "/img/event_burger_1", "/img/event_burger_1",open_date, close_date,"내용",true);
 		event1 =repository.save(event1);
 		System.out.println("등록한 퀴즈는" + event1 + "입니다.");
-
 		List<Event> eventList = new ArrayList<>();
 		Collections.addAll(eventList, event1);
-		for(Event event : eventList){
-			service.insertLogin(login);
-		}
 		System.out.println(" --- 등록 처리 완료 --- ");
 	}
 

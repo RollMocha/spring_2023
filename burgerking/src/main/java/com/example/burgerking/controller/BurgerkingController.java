@@ -1,10 +1,6 @@
 package com.example.burgerking.controller;
 
-import com.example.burgerking.entity.Login;
-import com.example.burgerking.form.BurgerkingForm;
-import com.example.burgerking.service.BurgerkingService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -12,9 +8,6 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 @RequestMapping("/burgerking")
 public class BurgerkingController {
-    @Autowired
-    BurgerkingService service;
-
     @GetMapping("home")
     public String showList() {
         return "home";
@@ -108,5 +101,10 @@ public class BurgerkingController {
                 break;
         }
         return db_number;
+    }
+
+    @GetMapping("/event/0/0")
+    public String showEvent(){
+
     }
 }

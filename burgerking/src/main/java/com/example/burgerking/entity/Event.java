@@ -21,11 +21,11 @@ public class Event {
 
     private String out_image;
 
-    private Date close_day;
+    private LocalDate open_day;
+
+    private LocalDate close_day;
 
     private String question;
 
     private Boolean progress;
-
-    private Date open_day;
 }
