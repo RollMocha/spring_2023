@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th = "http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>이벤트</title>
+    <link rel="stylesheet" href="/css/top_menu.css">
+    <link rel="stylesheet" href="/css/home.css">
+    <link rel="stylesheet" href="/css/bottom_menu.css">
+    <link rel="stylesheet" href="/css/black_line.css">
+    <link rel="stylesheet" href="/css/event.css">
+</head>
+<body>
+    <div th:replace="/fragment/top_menu.html :: top_menu"></div>
+    <div th:replace="/fragment/black_line.html :: black_line"></div>
+    <div id="div_event">
+        <h1>이벤트</h1>
+        <table class="tb_progress">
+            <tr>
+                <th><a th:href="@{/burgerking/event/0/0}">전체</a></th>
+                <th><a th:href="@{/burgerking/event/0/1}">진행중</a></th>
+                <th><a th:href="@{/burgerking/event/0/2}">종료</a></th>
+            </tr>
+        </table>
+        <table class="tb_event">
+            <tr>
+                <a th:href="@{/burgerking/event/0/1}"><th class="th_event">이벤트</th></a>
+                <th class="th_new_store"><a th:href="@{/burgerking/event/1/0}">신규매장</a></th>
+            </tr>
+        </table>
+        <div class="sub_event" th:switch="${th_event}">
+            <div th:case="all"></div>
+            <div th:case="event"></div>
+            <div th:case="end"></div>
+        </div>
+    </div>
+    <div th:replace="/fragment/bottom_menu.html :: bottom_menu"></div>
+    <script src="/js/event.js">
+
+    </script>
+</body>
+</html>

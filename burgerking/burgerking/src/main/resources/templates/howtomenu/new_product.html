@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html xmlns:th = "http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" href="/css/top_menu.css">
+  <link rel="stylesheet" href="/css/home.css">
+  <link rel="stylesheet" href="/css/bottom_menu.css">
+  <link rel="stylesheet" href="/css/black_line.css">
+  <link rel="stylesheet" href="/css/howtomenu.css">
+  <style>
+        #background {
+            background-color: white;
+            width: 100%;
+            height: 870px;
+            position: absolute;
+        }
+        #bottom_menu{
+            width: 100%;
+            height: 700px;
+            position: absolute;
+            top: 1000px;
+            background-color: #2B0200;
+        }
+        #map{
+            width:1500px;
+            height:740px;
+            position: absolute;
+            top: 180px;
+        }
+        #search {
+            width:420px;
+            height:740px;
+            position: absolute;
+            top: 180px;
+            right: 0px;
+        }
+        .tb_store {
+            width: 100%;
+            height: 70px;
+            font-size: 20px;
+            border-collapse: collapse;
+        }
+        .tb_store tr th:nth-child(1){
+            color: red;
+            border-bottom: 2px solid red;
+        }
+        .store_options {
+            width: 100%;
+            height: 70px;
+        }
+        .store_options p {
+            position: absolute;
+            top: 90px;
+            left: 20px;
+            font-size: 20px;
+            font-weight: bolder;
+        }
+        .btn_search{
+            width: 80%;
+            height: 56px;
+            position: absolute;
+            top: 160px;
+            right: 40px;
+            font-size: 20px;
+            font-weight: bolder;
+            border: 1px solid black;
+        }
+        .btn_search p{
+            text-align: center;
+            margin-top: 12px;
+        }
+        .results{
+            width: 100%;
+            height: 500px;
+            position: absolute;
+            top: 240px;
+            right: 0px;
+            background-color: blue;
+        }
+    </style>
+</head>
+    <body>
+        <div id="background"></div>
+        <div th:replace="/fragment/top_menu.html :: top_menu"></div>
+        <div th:replace="/fragment/black_line.html :: black_line"></div>
+        <div id="map"></div>
+        <div id="search">
+            <table class="tb_store">
+                <tr>
+                    <th>가까운 매장</th>
+                    <th>매장명검색</th>
+                    <th>지역검색</th>
+                </tr>
+            </table>
+            <hr>
+            <div class="store_options">
+                <p>매장옵션</p>
+            </div>
+            <hr>
+            <div class="btn_search">
+                <p>현 위치로 매장검색</p>
+            </div>
+            <div class="results">
+
+            </div>
+        </div>
+        <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=5b9103772f09aee62ddd0f75ea795637"></script>
+        <script src="/js/new_product.js"></script>
+    </body>
+</html>

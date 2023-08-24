@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html xmlns:th = "http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/css/top_menu.css">
+    <link rel="stylesheet" href="/css/bottom_menu.css">
+    <link rel="stylesheet" href="/css/black_line.css">
+    <link rel="stylesheet" href="/css/howtomenu.css">
+    <link rel="stylesheet" href="/css/find_store.css">
+</head>
+<body>
+<div id="background"></div>
+<div th:replace="/fragment/top_menu.html :: top_menu"></div>
+<div th:replace="/fragment/black_line.html :: black_line"></div>
+<div id="map"></div>
+<div id="search">
+    <table class="tb_store">
+        <tr>
+            <th class="th_store">가까운 매장</th>
+            <th class="th_store">매장명검색</th>
+            <th class="th_store">지역검색</th>
+        </tr>
+    </table>
+    <hr>
+    <div class="store_options">
+        <p>매장옵션</p>
+        <img src="/img/arrow.png" class="arrow">
+    </div>
+    <div class="sub_store_options">
+        <h1>매장옵션</h1>
+        <img src="/img/x.png" class="x">
+        <hr>
+        <div class="application">
+            <p>적용</p>
+        </div>
+    </div>
+    <hr>
+    <div class="btn_search">
+        <p>현 위치로 매장검색</p>
+    </div>
+    <div class="txt_store_name">
+        <input type="text">
+        <div class="btn_store_name"></div>
+    </div>
+    <div class="search_area">
+        <select name="특별/광역시" class="metropolitan" onchange="handleOnChange(this)">
+            <option value="Metropolitan">특별/광역시</option>
+            <option value="Seoul">서울특별시</option>
+            <option value="Busan">부산광역시</option>
+            <option value="Daegu">대구광역시</option>
+            <option value="Incheon">인천광역시</option>
+            <option value="Gwangju">광주광역시</option>
+            <option value="Daejeon">대전광역시</option>
+            <option value="Ulsan">울산광역시</option>
+            <option value="Sejong">세종특별자치시</option>
+            <option value="Gyeonggi">경기도</option>
+            <option value="Gangwon">강원도</option>
+            <option value="Chungcheongbuk">충청북도</option>
+            <option value="Chungcheongnam">충청남도</option>
+            <option value="Jeollabuk">전라북도</option>
+            <option value="Jeollanam">전라남도</option>
+            <option value="Gyeongsangbuk">경상북도</option>
+            <option value="Gyeongsangnam">경상남도</option>
+            <option value="Jeju">제주특별자치도</option>
+        </select>
+        <select name="군, 구" class="district">
+            <option value="gun">군, 구</option>
+        </select>
+        <select name="군, 구" class="district">
+            <option value="군, 구">군, 구</option>
+            <option value="강남구">강남구</option>
+            <option value="강동구">강동구</option>
+            <option value="강북구">강북구</option>
+            <option value="강서구">강서구</option>
+            <option value="관악구">관악구</option>
+            <option value="광진구">광진구</option>
+            <option value="구로구">구로구</option>
+            <option value="금천구">금천구</option>
+            <option value="노원구">노원구</option>
+            <option value="도봉구">도봉구</option>
+            <option value="동대문구">동대문구</option>
+            <option value="동작구">동작구</option>
+            <option value="마포구">마포구</option>
+            <option value="서대문구">서대문구</option>
+            <option value="서초구">서초구</option>
+            <option value="성동구">성동구</option>
+            <option value="성북구">성북구</option>
+            <option value="송파구">송파구</option>
+            <option value="양천구">양천구</option>
+            <option value="영등포구">영등포구</option>
+            <option value="용산구">용산구</option>
+            <option value="은평구">은평구</option>
+            <option value="종로구">종로구</option>
+            <option value="중구">중구</option>
+            <option value="중랑구">중랑구</option>
+        </select>
+        <!--/*
+        <select name="군, 구" class="district">
+            <option value="군, 구">군, 구</option>
+            <option value="강서구">강서구</option>
+            <option value="금정구">금정구</option>
+            <option value="기장군">기장군</option>
+            <option value="남구">남구</option>
+            <option value="동구">동구</option>
+            <option value="동래구">동래구</option>
+            <option value="부산진구">부산진구</option>
+            <option value="북구">북구</option>
+            <option value="사상구">사상구</option>
+            <option value="사하구">사하구</option>
+            <option value="서구">서구</option>
+            <option value="수영구">수영구</option>
+            <option value="연제구">연제구</option>
+            <option value="영도구">영도구</option>
+            <option value="중구">중구</option>
+            <option value="해운대구">해운대구</option>
+        </select>
+        <select name="군, 구" class="district">
+            <option value="군, 구">군, 구</option>
+            <option value="남구">남구</option>
+            <option value="달서구">달서구</option>
+            <option value="달성군">달성군</option>
+            <option value="동구">동구</option>
+            <option value="북구">북구</option>
+            <option value="서구">서구</option>
+            <option value="수성구">수성구</option>
+            <option value="서구">서구</option>
+            <option value="중구">중구</option>
+        </select>
+        <select name="군, 구" class="district">
+            <option value="군, 구">군, 구</option>
+            <option value="강화군">강화군</option>
+            <option value="계왕구">계왕구</option>
+            <option value="남동구">남동구</option>
+            <option value="동구">동구</option>
+            <option value="미추홀구">미추홀구</option>
+            <option value="부평구">부평구</option>
+            <option value="서구">서구</option>
+            <option value="연수구">연수구</option>
+            <option value="옹진군">옹진군</option>
+            <option value="중구">중구</option>
+        </select>
+        <select name="군, 구" class="district">
+            <option value="군, 구">군, 구</option>
+            <option value="광산구">광산구</option>
+            <option value="남구">남구</option>
+            <option value="동구">동구</option>
+            <option value="북구">북구</option>
+            <option value="서구">서구</option>
+        </select>
+        <select name="군, 구" class="district">
+            <option value="군, 구">군, 구</option>
+            <option value="대덕구">대덕구</option>
+            <option value="동구">동구</option>
+            <option value="서구">서구</option>
+            <option value="유성구">유성구</option>
+            <option value="중구">중구</option>
+        </select>
+        <select name="군, 구" class="district">
+            <option value="군, 구">군, 구</option>
+            <option value="남구">인천광역시</option>
+            <option value="동구">대전광역시</option>
+            <option value="북구">충청북도</option>
+            <option value="울주군">대전광역시</option>
+            <option value="중구">충청북도</option>
+        </select>
+        <select name="군, 구" class="district">
+            <option value="군, 구">특별/광역시</option>
+            <option value="세종시">인천광역시</option>
+        </select>
+        <select name="군, 구" class="district">
+            <option value="군, 구">군, 구</option>
+            <option value="가평군">인천광역시</option>
+            <option value="고양시 덕양구">특별/광역시</option>
+            <option value="고양시 일산동구">인천광역시</option>
+            <option value="고양시 일산서구">특별/광역시</option>
+            <option value="과찬시">인천광역시</option>
+            <option value="광명시">인천광역시</option>
+            <option value="광주시">특별/광역시</option>
+            <option value="구리시">인천광역시</option>
+            <option value="군포시">특별/광역시</option>
+            <option value="김포시">인천광역시</option>
+            <option value="남양주시">인천광역시</option>
+            <option value="동두천시">특별/광역시</option>
+            <option value="부천시">인천광역시</option>
+            <option value="성남시 분당구">특별/광역시</option>
+            <option value="성남시 수정구">인천광역시</option>
+            <option value="성남시 중원구">인천광역시</option>
+            <option value="수원시 권선구">특별/광역시</option>
+            <option value="수원시 영통구">인천광역시</option>
+            <option value="수원시 장안구">특별/광역시</option>
+            <option value="수원시 팔달구">인천광역시</option>
+            <option value="시흥시">특별/광역시</option>
+            <option value="안산시 단원구">인천광역시</option>
+            <option value="안산시 상록구">인천광역시</option>
+            <option value="안성시">특별/광역시</option>
+            <option value="안양시 동안구">인천광역시</option>
+            <option value="안양시 만안구">특별/광역시</option>
+            <option value="양주시">인천광역시</option>
+            <option value="양평군">특별/광역시</option>
+            <option value="여주시">인천광역시</option>
+            <option value="연천군">인천광역시</option>
+            <option value="오산시">특별/광역시</option>
+            <option value="용인시 기흥구">인천광역시</option>
+            <option value="용인시 수지구">특별/광역시</option>
+            <option value="용인시 처인구">인천광역시</option>
+            <option value="의왕시">특별/광역시</option>
+            <option value="의정부시">인천광역시</option>
+            <option value="이천시">인천광역시</option>
+            <option value="파주시">특별/광역시</option>
+            <option value="평택시">인천광역시</option>
+            <option value="포천시">특별/광역시</option>
+            <option value="하남시">인천광역시</option>
+            <option value="화성시">인천광역시</option>
+        </select>
+        <select name="군, 구" class="district">
+            <option value="군, 구">군, 구</option>
+            <option value="강릉시">인천광역시</option>
+            <option value="고성군">특별/광역시</option>
+            <option value="동해시">인천광역시</option>
+            <option value="삼척시">특별/광역시</option>
+            <option value="속초시">인천광역시</option>
+            <option value="양구군">인천광역시</option>
+            <option value="양양군">특별/광역시</option>
+            <option value="영월군">인천광역시</option>
+            <option value="원주시">특별/광역시</option>
+            <option value="인제군">인천광역시</option>
+            <option value="정선군">인천광역시</option>
+            <option value="철원군">특별/광역시</option>
+            <option value="춘천시">인천광역시</option>
+            <option value="태백시">특별/광역시</option>
+            <option value="평창군">인천광역시</option>
+            <option value="흥천군">인천광역시</option>
+            <option value="화천군">특별/광역시</option>
+            <option value="횡성군">인천광역시</option>
+        </select>
+        <select name="군, 구" class="district">
+            <option value="군, 구">군, 구</option>
+            <option value="괴산군">인천광역시</option>
+            <option value="단양군">특별/광역시</option>
+            <option value="보은군">인천광역시</option>
+            <option value="영동군">특별/광역시</option>
+            <option value="옥천군">인천광역시</option>
+            <option value="음성군">인천광역시</option>
+            <option value="제천시">특별/광역시</option>
+            <option value="증평군">인천광역시</option>
+            <option value="진천군">특별/광역시</option>
+            <option value="청주시 상당구">인천광역시</option>
+            <option value="청주시 서원구">인천광역시</option>
+            <option value="청주시 청원구">특별/광역시</option>
+            <option value="청주시 흥덕구">인천광역시</option>
+            <option value="충주시">특별/광역시</option>
+        </select>
+        <select name="군, 구" class="district">
+            <option value="군, 구">군, 구</option>
+            <option value="계룡시">인천광역시</option>
+            <option value="공주시">특별/광역시</option>
+            <option value="금산군">인천광역시</option>
+            <option value="논산시">특별/광역시</option>
+            <option value="당진시">인천광역시</option>
+            <option value="보령시">인천광역시</option>
+            <option value="부여군">특별/광역시</option>
+            <option value="서산시">인천광역시</option>
+            <option value="서천군">특별/광역시</option>
+            <option value="아산시">인천광역시</option>
+            <option value="예산군">인천광역시</option>
+            <option value="천안시 동남구">특별/광역시</option>
+            <option value="천안시 서북구">인천광역시</option>
+            <option value="청양군">특별/광역시</option>
+            <option value="태안군">특별/광역시</option>
+            <option value="홍성군">인천광역시</option>
+        </select>
+        <select name="군, 구" class="district">
+            <option value="군, 구">군, 구</option>
+            <option value="고창군">인천광역시</option>
+            <option value="군산시">특별/광역시</option>
+            <option value="김제시">인천광역시</option>
+            <option value="남원시">특별/광역시</option>
+            <option value="무주군">인천광역시</option>
+            <option value="부안군">인천광역시</option>
+            <option value="순창군">특별/광역시</option>
+            <option value="완주군">인천광역시</option>
+            <option value="익산시">특별/광역시</option>
+            <option value="임실군">인천광역시</option>
+            <option value="장수군">인천광역시</option>
+            <option value="전주시 덕진구">특별/광역시</option>
+            <option value="전주시 완산구">인천광역시</option>
+            <option value="정읍시">특별/광역시</option>
+            <option value="진안군">특별/광역시</option>
+        </select>
+        <select name="군, 구" class="district">
+            <option value="군, 구">군, 구</option>
+            <option value="강진군">인천광역시</option>
+            <option value="고흥군">특별/광역시</option>
+            <option value="곡성군">인천광역시</option>
+            <option value="광양시">특별/광역시</option>
+            <option value="구례군">인천광역시</option>
+            <option value="나주시">인천광역시</option>
+            <option value="담양군">특별/광역시</option>
+            <option value="목포시">인천광역시</option>
+            <option value="무안군">특별/광역시</option>
+            <option value="보성군">인천광역시</option>
+            <option value="순천시">인천광역시</option>
+            <option value="신안군">특별/광역시</option>
+            <option value="여수시">인천광역시</option>
+            <option value="영광군">특별/광역시</option>
+            <option value="영암군">특별/광역시</option>
+            <option value="완도군">인천광역시</option>
+            <option value="장성군">특별/광역시</option>
+            <option value="장흥군">인천광역시</option>
+            <option value="진도군">특별/광역시</option>
+        </select>
+        <select name="군, 구" class="district">
+            <option value="군, 구">군, 구</option>
+            <option value="경산시">인천광역시</option>
+            <option value="경주시">특별/광역시</option>
+            <option value="고령군">인천광역시</option>
+            <option value="구미시">특별/광역시</option>
+            <option value="군위군">인천광역시</option>
+            <option value="김천시">인천광역시</option>
+            <option value="문경시">특별/광역시</option>
+            <option value="봉화군">인천광역시</option>
+            <option value="상주시">특별/광역시</option>
+            <option value="성주군">인천광역시</option>
+            <option value="안동시">인천광역시</option>
+            <option value="영덕군">특별/광역시</option>
+            <option value="영양군">인천광역시</option>
+            <option value="영주시">특별/광역시</option>
+            <option value="영천시">특별/광역시</option>
+            <option value="예천군">인천광역시</option>
+            <option value="울릉군">특별/광역시</option>
+            <option value="울진군">인천광역시</option>
+            <option value="의성군">특별/광역시</option>
+            <option value="청도군">인천광역시</option>
+            <option value="청송군">인천광역시</option>
+            <option value="칠곡군">특별/광역시</option>
+            <option value="포항시 남구">인천광역시</option>
+            <option value="포항시 북구">특별/광역시</option>
+        </select>
+        <select name="군, 구" class="district">
+            <option value="군, 구">군, 구</option>
+            <option value="거제시">인천광역시</option>
+            <option value="거창군">특별/광역시</option>
+            <option value="고성군">인천광역시</option>
+            <option value="김해시">특별/광역시</option>
+            <option value="남해군">인천광역시</option>
+            <option value="밀양시">인천광역시</option>
+            <option value="사천시">특별/광역시</option>
+            <option value="산청군">인천광역시</option>
+            <option value="양산시">특별/광역시</option>
+            <option value="의령군">인천광역시</option>
+            <option value="진주시">인천광역시</option>
+            <option value="창녕군">특별/광역시</option>
+            <option value="창원시 마산합포구">인천광역시</option>
+            <option value="창원시 마산회원구">특별/광역시</option>
+            <option value="창원시 성산구">특별/광역시</option>
+            <option value="창원시 의창구">인천광역시</option>
+            <option value="창원시 진해구">특별/광역시</option>
+            <option value="통영시">인천광역시</option>
+            <option value="하동군">특별/광역시</option>
+            <option value="함안군">특별/광역시</option>
+            <option value="함양군">인천광역시</option>
+            <option value="합천군">특별/광역시</option>
+        </select>
+        <select name="군, 구" class="district">
+            <option value="군, 구">군, 구</option>
+            <option value="서귀포시">인천광역시</option>
+            <option value="제주시">특별/광역시</option>
+        </select>
+        */-->
+    </div>
+    <div class="results">
+
+    </div>
+    <div>
+
+    </div>
+</div>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=5b9103772f09aee62ddd0f75ea795637"></script>
+<script src="/js/find_store.js"></script>
+</body>
+</html>
