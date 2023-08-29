@@ -46,15 +46,18 @@ public class BurgerkingController {
         return view;
     }
 
-    @GetMapping("/javascript_test")
+    @GetMapping("/")
     public String javascriptTest() {
         return "javascript_test";
     }
 
+    @GetMapping("find_store")
+    public String show_new_product(Model model) {
+        return "find_store";
+    }
+
     @GetMapping("/event/{n1}/{n2}")
     public String menu_sdp_List(@PathVariable Integer n1, @PathVariable Integer n2, Model model) {
-        String link = null;
-
         model.addAttribute("black_line", "event");
         switch (n1) {
             case 0:
@@ -69,38 +72,14 @@ public class BurgerkingController {
                         model.addAttribute("th_event", "end");
                         break;
                 }
-                link = "event";
-                break;
             case 1:
                 switch (n2) {
                     case 0:
                         break;
                 }
-                link = "new_store";
                 break;
         }
-        return link;
-    }
-
-    @GetMapping("/event_bulletin/{no}")
-    public String show_event_bulletin(@PathVariable Integer no, Model model) {
-        String db_number = null;
-
-        switch (no){
-            case 0:
-                model.addAttribute("eb", "0");
-                db_number = "event_bulletin";
-                break;
-            case 1:
-                model.addAttribute("eb", "1");
-                db_number = "event_bulletin";
-                break;
-            case 2:
-                model.addAttribute("eb", "2");
-                db_number = "event_bulletin";
-                break;
-        }
-        return db_number;
+        return "event";
     }
 
     @GetMapping("/event/0/0")

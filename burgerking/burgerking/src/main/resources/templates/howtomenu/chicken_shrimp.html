@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th = "http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/css/top_menu.css">
+    <link rel="stylesheet" href="/css/home.css">
+    <link rel="stylesheet" href="/css/bottom_menu.css">
+    <link rel="stylesheet" href="/css/black_line.css">
+    <link rel="stylesheet" href="/css/howtomenu.css">
+    <style>
+        #background {
+            background-color: white;
+            width: 100%;
+            height: 1000px;
+            position: absolute;
+        }
+        #bottom_menu{
+            width: 100%;
+            height: 700px;
+            position: absolute;
+            top: 1000px;
+            background-color: #2B0200;
+        }
+        .tb_HowtoUse tr th:nth-child(5){
+            border-bottom: 2px solid red;
+        }
+        .tb_HowtoUse tr th:nth-child(5) a{
+            color: red;
+        }
+        #subimg {
+            background-color: #0000FF;
+        }
+    </style>
+</head>
+<body>
+<div id="background"></div>
+<div th:replace="/fragment/top_menu.html :: top_menu"></div>
+<div th:replace="/fragment/black_line.html :: black_line"></div>
+<div th:replace="/fragment/howtomenu.html :: howtomenu"></div>
+<div id="subimg">
+
+</div>
+<div th:replace="/fragment/bottom_menu.html :: bottom_menu"></div>
+</body>
+</html>

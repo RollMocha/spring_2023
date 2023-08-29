@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th = "http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/css/top_menu.css">
+</head>
+<body>
+    <div id="top_menu" th:fragment="top_menu">
+        <div class="burger_logo">
+            <img src="https://www.burgerking.co.kr/dist/img/logo_header.51e1a8b7.gif" alt="burgerking_logo" width="80px" height="80px"/>
+        </div>
+        <ul class="menu">
+            <li>
+                <a href="#" class="fontA">메뉴소개</a>
+                <ul class="submenu">
+                    <li><a th:href="@{/burgerking/howtomenu/1}">스페셜&할인팩</a></li>
+                    <li><a th:href="@{/burgerking/howtomenu/2}">신제품(NEW)</a></li>
+                    <li><a th:href="@{/burgerking/howtomenu/3}">프리미엄</a></li>
+                    <li><a th:href="@{/burgerking/howtomenu/4}">와퍼&주니어</a></li>
+                    <li><a th:href="@{/burgerking/howtomenu/5}">치킨&슈림프버거</a></li>
+                    <li><a th:href="@{/burgerking/howtomenu/6}">올데이킹&킹모닝</a></li>
+                    <li><a th:href="@{/burgerking/howtomenu/7}">사이드</a></li>
+                    <li><a th:href="@{/burgerking/howtomenu/8}">음료&디저트</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#" class="fontA">매장소개</a>
+                <ul class="submenu">
+                    <li><a href="/burgerking/find_store">매장찾기</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#" class="fontA">이벤트</a>
+                <ul class="submenu">
+                    <li><a th:href="@{/burgerking/event/0/1}">이벤트</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#" class="fontA">브랜드 스토리</a>
+                <ul class="submenu">
+                    <li><a href="#">Brand</a></li>
+                    <li><a href="#">WHOPPER</a></li>
+                    <li><a href="#">COMM.</a></li>
+                </ul>
+            </li>
+        </ul>
+        <input type="submit" value="가맹점 문의" class="div_IAF"/>
+        <input type="submit" value="딜리버리 주문" class="div_DO"/>
+    </div>
+</body>
+</html>
